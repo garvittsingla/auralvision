@@ -6,7 +6,7 @@ const API_KEY = process.env.API_KEY;
 console.log("API Key loaded:", API_KEY ? "Yes" : "No");
 const genAI = new GoogleGenerativeAI(API_KEY);
 const fileManager = new GoogleAIFileManager(API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-04-17" });
 
 async function main(imagePath) {
     try {
@@ -51,14 +51,14 @@ async function main(imagePath) {
                             },
                         },
                         {
-                            text: "You are a ai model , you are a eye of a blind person having camera from a spectacles, it can give you a random images and you have to explain it the content helping him to understand the context and explain the surroundings,wxplain whats the image is about, if there is a document in a picture just give the contnet of the document in the image , here is the image uploaded in you ",
+                            text: "You are a ai model , you are a eye of a blind person having camera from a spectacles, it can give you a random images and you have to explain it the content helping him to understand the context and explain the surroundings,wxplain whats the image is about, if there is a document in a picture just give the contnet of the document in the image here is the image uploaded in you , give me response in max 100 words everytime , make it a strict 100 words summarized ",
                         },
                     ],
                 },
             ],
         });
 
-        const user_prompt = "You are a ai model , you are a eye of a blind person having camera from a spectacles, it can give you a random images and you have to explain it the content helping him to understand the context and explain the surroundings,wxplain whats the image is about, if there is a document in a picture just give the contnet of the document in the image here is the image uploaded in you";
+        const user_prompt = "You are a ai model , you are a eye of a blind person having camera from a spectacles, it can give you a random images and you have to explain it the content helping him to understand the context and explain the surroundings,wxplain whats the image is about, if there is a document in a picture just give the contnet of the document in the image here is the image uploaded in you , give me response in max 100 words everytime , make it a strict 100 words summarized";
         
         console.log("Sending prompt to AI");
         const result = await chatSession.sendMessage(user_prompt);
